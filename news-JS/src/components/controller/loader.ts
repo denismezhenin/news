@@ -1,31 +1,32 @@
-import { callbackFn } from '../types/interfaces';
+import { errors } from '../constants/constants';
+import { callbackFn, objString, responseArguments, responseErrors } from '../types/interfaces';
 
 class Loader {
     readonly baseLink: string;
-    readonly options: { apiKey: string };
+    readonly options: objString;
 
-    constructor(baseLink: string, options: { apiKey: string }) {
+    constructor(baseLink: string, options: objString) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
-    protected getResp(
-        { endpoint, options = {} }: { endpoint: string; options?: object },
+    protected getResponse(
+        { endpoint, options = {} }: responseArguments,
         callback: callbackFn = () => {
-            console.error('No callback for GET response');
+            console.error(errors.badGetResponse);
         }
     ): void {
         this.load('GET', endpoint, callback, options);
     }
 
-    protected errorHandler(res: Response): Response {
-        if (!res.ok) {
-            if (res.status === 401 || res.status === 404)
-                console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
-            throw Error(res.statusText);
+    protected errorHandler(response: Response): Response {
+        if (!response.ok) {
+            if (response.status === responseErrors.unauthorized || response.status === responseErrors.notFound)
+                console.log(`Sorry, but there is ${response.status} error: ${response.statusText}`);
+            throw Error(response.statusText);
         }
 
-        return res;
+        return response;
     }
 
     protected makeUrl(options: { sources?: string }, endpoint: string): string {

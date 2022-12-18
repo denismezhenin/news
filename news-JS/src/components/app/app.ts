@@ -14,13 +14,13 @@ class App {
     start(): void {
         tsQuerySelector(document, '.sources').addEventListener('click', (e) =>
             this.controller.getNews(e, (data) => {
-                if (data != undefined) {
+                if (data) {
                     this.view.drawNews(data);
                 }
             })
         );
         this.controller.getSources((data) => {
-            if (data != undefined) {
+            if (data) {
                 this.view.drawSources(data);
             }
         });

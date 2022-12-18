@@ -7,8 +7,7 @@
 .news__item {
     display: flex;
     flex-direction: column;
-    margin: 1rem auto;
-    margin-bottom: 1.6%;
+    margin: 1rem auto 1.6%;
     background: #fff;
     color: #333;
     line-height: 1.4;
@@ -46,22 +45,22 @@
 
 .news__item .news__meta-details {
     position: absolute;
+    width: 100%;
     top: 0;
     bottom: 0;
     left: -120%;
     margin: auto;
-    transition: left 0.2s;
+    padding: 10px;
     background: rgba(0, 0, 0, 0.6);
     color: #fff;
-    padding: 10px;
-    width: 100%;
     font-size: 0.9rem;
+    transition: left 0.2s;
 }
 
 .news__item .news__description {
+    position: relative;
     padding: 1rem;
     background: #fff;
-    position: relative;
     z-index: 1;
 }
 
@@ -72,11 +71,11 @@
 }
 
 .news__item .news__description h3 {
+    margin-top: 5px;
+    color: #a2a2a2;
     font-size: 1rem;
     font-weight: 300;
     text-transform: uppercase;
-    color: #a2a2a2;
-    margin-top: 5px;
 }
 
 .news__item .news__description .news__read-more {
@@ -84,9 +83,9 @@
 }
 
 .news__item .news__description .news__read-more a {
-    color: #5ad67d;
-    display: inline-block;
     position: relative;
+    display: inline-block;
+    color: #5ad67d;
     text-decoration: none;
     font-weight: 800;
 }
@@ -109,17 +108,17 @@
 }
 
 .news__item p:first-of-type {
-    margin-top: 1.25rem;
     position: relative;
+    margin-top: 1.25rem;
 }
 
 .news__item p:first-of-type:before {
     content: '';
     position: absolute;
     height: 5px;
-    background: #5ad67d;
     width: 35px;
     top: -0.75rem;
+    background: #5ad67d;
     border-radius: 3px;
 }
 
@@ -143,15 +142,15 @@
     }
 
     .news__item .news__description:before {
-        -webkit-transform: skewX(-3deg);
-        transform: skewX(-3deg);
-        content: '';
-        background: #fff;
-        width: 30px;
         position: absolute;
+        content: '';
+        width: 30px;
         left: -10px;
         top: 0;
         bottom: 0;
+        background: #fff;
+        transform: skewX(-3deg);
+        -webkit-transform: skewX(-3deg);
         z-index: -1;
     }
 

@@ -1,11 +1,12 @@
 import AppLoader from './appLoader';
 import { callbackFn } from '../types/interfaces';
+import { ENDPOINTS } from '../constants/endpoints';
 
 class AppController extends AppLoader {
     getSources(callback: callbackFn): void {
-        super.getResp(
+        super.getResponse(
             {
-                endpoint: 'sources',
+                endpoint: ENDPOINTS.sources,
             },
             callback
         );
@@ -17,18 +18,20 @@ class AppController extends AppLoader {
 
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
-                const sourceId = target.getAttribute('data-source-id') as string;
+                const sourceId = target.getAttribute('data-source-id');
                 if (newsContainer.getAttribute('data-source') !== sourceId) {
-                    newsContainer.setAttribute('data-source', sourceId);
-                    super.getResp(
-                        {
-                            endpoint: 'everything',
-                            options: {
-                                sources: sourceId,
+                    if (sourceId) {
+                        newsContainer.setAttribute('data-source', sourceId);
+                        super.getResponse(
+                            {
+                                endpoint: ENDPOINTS.everything,
+                                options: {
+                                    sources: sourceId,
+                                },
                             },
-                        },
-                        callback
-                    );
+                            callback
+                        );
+                    }
                 }
                 return;
             }

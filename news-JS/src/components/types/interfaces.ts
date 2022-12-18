@@ -34,3 +34,17 @@ export interface drawSourcesData extends drawNewsData {
 }
 
 export type callbackFn = (obj?: drawSourcesData) => void;
+
+export interface objString {
+    [index: string]: string;
+}
+
+export interface responseArguments {
+    endpoint: string;
+    options?: objString;
+}
+
+export enum responseErrors {
+    unauthorized = 401,
+    notFound = 404,
+}

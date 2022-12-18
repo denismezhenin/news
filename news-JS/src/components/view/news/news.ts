@@ -1,10 +1,11 @@
 import './news.css';
 import { drawData } from '../../types/interfaces';
 import tsQuerySelector from '../../function/function';
+import { NewsPerPage } from '../../constants/constants';
 
 class News {
     draw(data: drawData[]): void {
-        const news = data.length >= 10 ? data.filter((_item, idx: number) => idx < 10) : data;
+        const news = data.length >= NewsPerPage ? data.filter((_item, idx: number) => idx < NewsPerPage) : data;
 
         const fragment = document.createDocumentFragment();
         const newsItemTemp = tsQuerySelector(document, '#newsItemTemp') as HTMLTemplateElement;
