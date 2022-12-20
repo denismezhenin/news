@@ -13,8 +13,9 @@ class AppController extends AppLoader {
     }
 
     getNews(e: Event, callback: callbackFn): void {
-        let target = <HTMLElement>e.target;
-        const newsContainer = <HTMLElement>e.currentTarget;
+        if (!(e.currentTarget instanceof HTMLElement) || !(e.target instanceof HTMLElement)) return;
+        const newsContainer = e.currentTarget;
+        let target: HTMLElement = e.target;
 
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
