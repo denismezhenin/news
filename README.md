@@ -13,3 +13,5 @@ Deploy [link](https://news-js-denismezhenin.netlify.app/)
 - SASS
 - Jvascript
 - Typescript
+- Webpack
+- ESLint
